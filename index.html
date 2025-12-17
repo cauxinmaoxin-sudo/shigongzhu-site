@@ -1,188 +1,121 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>吴大王，开心每一天！</title>
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Ma Shan Zheng', Arial, sans-serif;
-      background-color: #F5E8C7;
-      position: relative;
-      overflow: hidden;
-    }
-    .stitch-lilo {
-      width: 320px;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      z-index: 1;
-      opacity: 0.9;
-      position: relative;
-    }
-    .stitch-lilo.jump {
-      transform: translateY(-20px) scale(1.1);
-    }
-    h1 {
-      font-size: 3em;
-      color: #D9534F;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      background: rgba(255, 182, 193, 0.8);
-      padding: 15px 30px;
-      border-radius: 20px;
-      animation: continuousSwing 4s linear infinite;
-      z-index: 2;
-      margin-bottom: 10px;
-    }
-    @keyframes continuousSwing {
-      0% { transform: scale(1) rotate(0deg); color: #D9534F; }
-      25% { transform: scale(1.1) rotate(6deg); color: #FFD700; }
-      50% { transform: scale(1.1) rotate(-6deg); color: #FFD700; }
-      75% { transform: scale(1) rotate(6deg); color: #D9534F; }
-      100% { transform: scale(1) rotate(0deg); color: #D9534F; }
-    }
-    .apology-text {
-      font-size: 1.5em;
-      color: #8B4513;
-      text-align: center;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: rgba(255, 245, 238, 0.7);
-      border-radius: 10px;
-      transition: opacity 0.3s;
-    }
-    .sorry-button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      font-size: 1.2em;
-      color: #fff;
-      background-color: #D9534F;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .sorry-button:hover {
-      background-color: #C9302C;
-    }
-    .floating-text {
-      position: absolute;
-      font-size: 1.5em;
-      color: #D9534F;
-      opacity: 0.7;
-      user-select: none;
-    }
-    .whip {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 50px;
-      background: #000;
-      z-index: 3;
-      opacity: 0;
-      transform-origin: top;
-      animation: whipStrike 0.5s ease-out forwards;
-    }
-    @keyframes whipStrike {
-      0% { transform: translateX(-50%) rotate(0deg); opacity: 0; }
-      50% { transform: translateX(-50%) rotate(-45deg); opacity: 1; }
-      100% { transform: translateX(-50%) rotate(0deg); opacity: 0; }
-    }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2em;
-        padding: 10px 20px;
-      }
-      .stitch-lilo {
-        width: 220px;
-      }
-      .apology-text {
-        font-size: 1.2em;
-        padding: 8px 15px;
-      }
-      .sorry-button {
-        font-size: 1em;
-        padding: 8px 15px;
-      }
-      .floating-text {
-        font-size: 1.2em;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>史公主，开心每一天！</title>
+<style>
+body {
+  text-align: center;
+  background: linear-gradient(to bottom, #ffe6f0, #fff);
+  overflow: hidden;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+h1 {
+  margin-top: 30px;
+}
+.stitch-lilo {
+  width: 220px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.jump {
+  animation: jump 0.3s ease;
+}
+@keyframes jump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+.apology-text {
+  margin: 20px;
+  font-size: 1.1em;
+}
+.sorry-button {
+  padding: 8px 15px;
+}
+.floating-text {
+  font-size: 1.2em;
+  position: absolute;
+  opacity: 0.6;
+}
+</style>
 </head>
+
 <body>
-  <h1>吴大王，开心每一天！</h1>
-  <img class="stitch-lilo" src="./stitch_lilo.png" alt="Stitch and Lilo" onclick="jump()">
-  <div class="apology-text">吴大王，我错了，真心向你道歉！因为我骂了你，我很后悔，愿你每天开心！</div>
-  <button class="sorry-button" onclick="showExtraApology()">再道一次歉！</button>
-  <script>
-    function jump() {
-      const stitch = document.querySelector('.stitch-lilo');
-      stitch.classList.add('jump');
-      setTimeout(() => stitch.classList.remove('jump'), 300);
-    }
-    function showExtraApology() {
-      const apologies = [
-        "吴大王，对不起！我骂了你，真是我的错，求你原谅我！",
-        "I'm so sorry, Wu Dawang! I shouldn’t have said those harsh words, forgive me please!",
-        "吴大王，ごめんなさい！怒鳴ってしまって、本当に申し訳ありません。許してください！",
-        "Wu Dawang, lo siento mucho! Scolding you was a mistake, I hope you can forgive me!",
-        "吴大王，我知道骂你不对，我会改的，求你给我一个机会！"
-      ];
-      const randomIndex = Math.floor(Math.random() * apologies.length);
-      const apologyText = document.querySelector('.apology-text');
-      apologyText.textContent = apologies[randomIndex];
-      const stitch = document.querySelector('.stitch-lilo');
-      stitch.classList.add('jump');
-      // 添加鞭子动画
-      const whip = document.createElement('div');
-      whip.className = 'whip';
-      document.body.appendChild(whip);
-      setTimeout(() => {
-        document.body.removeChild(whip);
-        stitch.classList.remove('jump');
-      }, 500);
-    }
-    // 立即生成随机飘动文字
-    function createFloatingText() {
-      for (let i = 0; i < 20; i++) {
-        const text = document.createElement('div');
-        text.className = 'floating-text';
-        text.textContent = '我错了';
-        const startX = Math.random() * 100;
-        const startY = Math.random() * 100;
-        const endX = Math.random() * 100;
-        const endY = Math.random() * 100;
-        const duration = 8 + Math.random() * 4; // 8-12秒随机持续时间
-        text.style.left = startX + 'vw';
-        text.style.top = startY + 'vh';
-        text.style.animation = `float ${duration}s linear infinite`;
-        // 内联样式替代 keyframes
-        text.style.setProperty('--move-x', `${endX - startX}vw`);
-        text.style.setProperty('--move-y', `${endY - startY}vh`);
-        text.style.setProperty('--rotate', `${(Math.random() - 0.5) * 60}deg`);
-        document.body.appendChild(text);
-      }
-    }
-    createFloatingText();
-    // 动态添加通用的 float 动画
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes float {
-        0% { transform: translate(0, 0) rotate(0deg); }
-        100% { transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotate)); }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+<h1>史公主，开心每一天！</h1>
+
+<img class="stitch-lilo" src="./stitch_lilo.png" alt="Stitch and Lilo" onclick="jump()">
+
+<div class="apology-text">
+史公主，我不应该学你说话，对不起！以后给你买咖啡，请原谅我～
+</div>
+
+<button class="sorry-button" onclick="showExtraApology()">再道一次歉！</button>
+
+<script>
+function jump() {
+  const stitch = document.querySelector('.stitch-lilo');
+  stitch.classList.add('jump');
+  setTimeout(() => stitch.classList.remove('jump'), 300);
+}
+
+function showExtraApology() {
+  const apologies = [
+    "史公主，对不起！我不应该学你说话，以后我给你买咖啡，请你原谅我！",
+    "I'm really sorry, Shi Princess. I shouldn't have copied the way you talk. I'll buy you coffee next time — please forgive me!",
+    "史公主、ごめんなさい。あなたの話し方を真似するべきじゃなかったです。今度コーヒーを奢るので、許してください！",
+    "Lo siento mucho, Shi Princess. No debí imitar tu forma de hablar. Te invitaré un café, por favor perdóname.",
+    "史公主，我真的知道错了，不该学你说话。以后咖啡我包了，可以原谅我吗？"
+  ];
+
+  const randomIndex = Math.floor(Math.random() * apologies.length);
+  const apologyText = document.querySelector('.apology-text');
+  apologyText.textContent = apologies[randomIndex];
+
+  const stitch = document.querySelector('.stitch-lilo');
+  stitch.classList.add('jump');
+
+  setTimeout(() => {
+    stitch.classList.remove('jump');
+  }, 500);
+}
+
+// 生成飘动文字
+function createFloatingText() {
+  for (let i = 0; i < 20; i++) {
+    const text = document.createElement('div');
+    text.className = 'floating-text';
+    text.textContent = '我不该学你说话';
+
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 100;
+    const endX = Math.random() * 100;
+    const endY = Math.random() * 100;
+    const duration = 8 + Math.random() * 4;
+
+    text.style.left = startX + 'vw';
+    text.style.top = startY + 'vh';
+    text.style.animation = `float ${duration}s linear infinite`;
+
+    text.style.setProperty('--move-x', `${endX - startX}vw`);
+    text.style.setProperty('--move-y', `${endY - startY}vh`);
+    text.style.setProperty('--rotate', `${(Math.random() - 0.5) * 60}deg`);
+
+    document.body.appendChild(text);
+  }
+}
+createFloatingText();
+
+// 添加 float 动画
+const style = document.createElement('style');
+style.textContent = `
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotate)); }
+}`;
+document.head.appendChild(style);
+</script>
+
 </body>
 </html>
+
